@@ -10,7 +10,7 @@ const Navigation = () => {
         </Link>
       </div>
       <div>
-        <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/problemset">
+        <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/books">
           Books
         </Link>
         <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/login">

@@ -1,5 +1,3 @@
-from curses.ascii import isblank
-from msilib.schema import tables
 from tkinter import CASCADE
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator
@@ -19,7 +17,7 @@ class librarians(models.Model):
 class borrowed_books(models.Model):
     deadline = models.DateField()
     customer_id = models.IntegerField()
-    isbn = models.ForeignKey(books_details, on_delete=CASCADE)
+    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
 
 class customers(models.Model):
     customer_id = models.IntegerField(primary_key=True)
@@ -28,28 +26,28 @@ class customers(models.Model):
 
 class toReadList(models.Model):
     listName = models.TextField()
-    isbn = models.ForeignKey(books_details, on_delete=CASCADE)
-    customer_id = models.ForeignKey(customers, on_delete=CASCADE)
+    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
+    customer_id = models.ForeignKey(customers, on_delete=models.CASCADE)
 
 class overdue_books(models.Model):
     deadline = models.DateField()
-    isbn = models.ForeignKey(books_details, on_delete=CASCADE)
-    customer_id = models.ForeignKey(customers, on_delete=CASCADE)
-    librarian_id = models.ForeignKey(librarians, on_delete=CASCADE)
+    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
+    customer_id = models.ForeignKey(customers, on_delete=models.CASCADE)
+    librarian_id = models.ForeignKey(librarians, on_delete=models.CASCADE)
 
 class reviews(models.Model):
     listName = models.TextField()
     rating = models.IntegerField()
-    isbn = models.ForeignKey(books_details, on_delete=CASCADE)
+    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
 
 class books_toSell(models.Model):
-    isbn = models.ForeignKey(books_details, on_delete=CASCADE)
+    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
     title = models.TextField()
     author = models.TextField()
     price = models.IntegerField()
 
 class ebooks(models.Model):
-    isbn = models.ForeignKey(books_details, on_delete=CASCADE)
+    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
     title = models.TextField()
     author = models.TextField()
     hyperlink = models.TextField()
