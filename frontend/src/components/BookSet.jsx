@@ -21,9 +21,10 @@ const BookSet = () => {
   */
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/books").then((res) => {
+    axios.get("http://localhost:8000/books").then((res) => {
       const books = res.data;
-      setBooks(books.data);
+      console.log(books.data);
+      setBooks(books);
     });
   }, []);
 
@@ -47,14 +48,13 @@ const BookSet = () => {
         <tbody>
           {books && books.map((book, index) => {
             return (
-              <tr key={book.ID}>
+              <tr key={book.isbn}>
                 <th>{index + 1}</th>
                 <td>
-                  <Link key={book.ID} to={`/api/books/${book.ID}`}>
-                    {book.Title}
-                  </Link>
+                    {book.title}
                 </td>
-                <td>{book.Summary}</td>
+                <td>{book.summary}</td>
+                <td>{book.status}</td>
               </tr>
             );
           })}
