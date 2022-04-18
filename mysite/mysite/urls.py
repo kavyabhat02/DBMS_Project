@@ -25,4 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('books/', views.BookView),
+    path('ebooks/', views.ebooksView),
+    path('booksale/', views.buyBooksView),
 ]

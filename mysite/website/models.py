@@ -36,18 +36,19 @@ class overdue_books(models.Model):
     librarian_id = models.ForeignKey(librarians, on_delete=models.CASCADE)
 
 class reviews(models.Model):
-    listName = models.TextField()
-    rating = models.IntegerField()
     isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
+    customer_id = models.ForeignKey(customers, on_delete=models.CASCADE)
+    summary = models.TextField()
+    rating = models.IntegerField()
 
 class books_toSell(models.Model):
-    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
+    isbn = models.IntegerField(primary_key = True, validators = [MinLengthValidator(10), MaxLengthValidator(10)])
     title = models.TextField()
     author = models.TextField()
     price = models.IntegerField()
 
 class ebooks(models.Model):
-    isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
+    isbn = models.IntegerField(primary_key = True, validators = [MinLengthValidator(10), MaxLengthValidator(10)])
     title = models.TextField()
     author = models.TextField()
     hyperlink = models.TextField()

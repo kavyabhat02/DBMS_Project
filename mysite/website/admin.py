@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import books_details, librarians, borrowed_books, customers, overdue_books, reviews
+from .models import books_details, librarians, borrowed_books, customers, overdue_books
 
 class BookDetailsAdmin(admin.ModelAdmin):
     list_display = ('title', 'status')
