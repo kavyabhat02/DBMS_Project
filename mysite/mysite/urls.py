@@ -23,7 +23,7 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/', include(('website.routers', 'website'), namespace='website-api')),
     path('books/', views.BookView),
     path('ebooks/', views.ebooksView),
     path('booksale/', views.buyBooksView),

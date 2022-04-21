@@ -28,7 +28,7 @@ const BookSet = () => {
     });
   }, []);
 
-  return (
+ return (
     <div>
       <center>
         <h1>Book List</h1>
@@ -44,7 +44,7 @@ const BookSet = () => {
             <th scope="col">Summary</th>
             <th scope="col">Status</th>
           </tr>
-        </thead>
+        </thead> 
         <tbody>
           {books && books.map((book, index) => {
             return (

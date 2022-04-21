@@ -27,7 +27,7 @@ const SignupForm = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/auth/register", qs.stringify(formData), {
+      .post("http://localhost:8000/api/auth/register/", qs.stringify(formData), {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },

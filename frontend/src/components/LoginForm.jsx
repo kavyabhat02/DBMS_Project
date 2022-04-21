@@ -27,7 +27,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/auth/login", qs.stringify(formData), {
+      .post("http://localhost:8000/api/auth/login/", qs.stringify(formData), {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -38,7 +38,7 @@ const LoginForm = () => {
           console.log("Logged in");
         }
         else if (resp.status === 401) {
-          console.log("login failed");
+          console.log("Login failed");
         }
         setLoginMessage(resp.data.message);
       });
