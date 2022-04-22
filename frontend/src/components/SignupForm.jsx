@@ -14,6 +14,7 @@ const SignupForm = () => {
 
   const [signup, signupForm] = useState();
   const [signupMessage, setSignupMessage] = useState();
+  
 
   const handleChange = (e) => {
 
@@ -25,6 +26,7 @@ const SignupForm = () => {
 
   const submitResponse = (e) => {
     e.preventDefault();
+    
 
     axios
       .post("http://localhost:8000/api/auth/register/", qs.stringify(formData), {
@@ -34,14 +36,17 @@ const SignupForm = () => {
         formData: qs.stringify(formData),
       })
       .then((resp) => {
-        if (resp.status === 200) {
+        if (resp.status === 201) {
           console.log("Signed up successfully");
         }
         else if (resp.status === 401) {
           console.log("Signup failed");
         }
         setSignupMessage(resp.data.message);
+        console.log(setSignupMessage);
       });
+
+      
   }; 
  
   const validateForm = () => {
