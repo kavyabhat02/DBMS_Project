@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/SignupForm.css";
 import qs from 'qs'
@@ -12,9 +12,19 @@ const SignupForm = () => {
   const [formData, updateFormData] = useState(initialForm);
   //console.log(formData);
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [signup, signupForm] = useState();
   const [signupMessage, setSignupMessage] = useState();
+  const [user, setUser] = useState();
   
+  useEffect(() => {
+    const signedInUser = localStorage.getItem("user");
+    if (signedInUser) {
+      const foundUser = signedInUser;
+      setUser(foundUser);
+    }
+  }, []);
 
   const handleChange = (e) => {
 
@@ -22,6 +32,14 @@ const SignupForm = () => {
       ...formData, 
       [e.target.name]: e.target.value.trim()
     });
+  };
+
+  const handleSignout = () => {
+    setUser({});
+    setUsername("");
+    setPassword("");
+    localStorage.clear();
+    window.location.reload();
   };
 
   const submitResponse = (e) => {
@@ -43,7 +61,10 @@ const SignupForm = () => {
           console.log("Signup failed");
         }
         setSignupMessage(resp.data.message);
-        console.log(setSignupMessage);
+        setUser(resp.data);
+        // store the user in localStorage
+        localStorage.setItem('user', resp.data);
+
       });
 
       
@@ -53,24 +74,31 @@ const SignupForm = () => {
     return signup != null;
   };
 
-  return (
-    <div className="SignupForm">
-      <form>
-        Username: 
-        <input
-          type="username" name="username" required onChange={handleChange}
-        ></input> <br/><br/>
-        Password:
-        <input
-          type="password" name="password" required onChange={handleChange}
-        ></input>
-        <br /> <br />
-        <button onClick={submitResponse}>
-          Signup
-        </button>
-      </form>
-    </div>
-  );
+  if (user) {
+    const loggedIn = localStorage.getItem('user');
+    return (
+      <div className="SignupForm" style={{color: "white"}}>
+        <p>Welcome!</p>
+        <button onClick={handleSignout}>Sign Out</button>
+      </div>
+    );
+}
+
+return (
+  <div className="SignupForm" style={{color: "white"}}>
+    <form>
+      Username: 
+      <input name="username" required onChange={handleChange}></input> <br/><br/>
+      Password:
+      <input type="password" name="password" required onChange={handleChange}
+      ></input>
+      <br /> <br />
+      <button onClick={submitResponse}>
+        Signup
+      </button>
+    </form>
+  </div>
+);
 };
 
 export default SignupForm;

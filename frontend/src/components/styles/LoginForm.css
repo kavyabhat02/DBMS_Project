@@ -1,5 +1,6 @@
 @media all and (min-width: 480px) {
   .LoginForm button {
+    top: 400px;
     margin: 0 auto;
     display: flex;
   }
@@ -7,6 +8,10 @@
   .LoginForm form {
     margin: 0 auto;
     max-width: 320px;
+  }
+
+  .LoginForm p {
+    text-align: center;
   }
 }
   

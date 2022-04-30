@@ -18,6 +18,14 @@ const LoginForm = () => {
   const [loginMessage, setLoginMessage] = useState();
   const [user, setUser] = useState();
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = loggedInUser;
+      setUser(foundUser);
+    }
+  }, []);
+  
   const handleChange = (e) => {
 
     updateFormData({
@@ -26,9 +34,18 @@ const LoginForm = () => {
     });
   };
 
+  // logout the user
+  const handleLogout = () => {
+    setUser({});
+    setUsername("");
+    setPassword("");
+    localStorage.clear();
+    window.location.reload();
+  };
+
   const submitResponse = (e) => {
     e.preventDefault();
-    const user = {username, password};
+    //const user = {username, password};
     axios
       .post("http://localhost:8000/api/auth/login/", qs.stringify(formData), {
         headers: {
@@ -47,7 +64,6 @@ const LoginForm = () => {
         setUser(resp.data)
         // store the user in localStorage
         localStorage.setItem('user', resp.data)
-        console.log(resp.data)
       });
   }; 
  
@@ -55,29 +71,23 @@ const LoginForm = () => {
     return login != null;
   };
 
-  /*
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
-    }
-  }, []);*/
-
   if (user) {
-    return <div>{user.username} is logged in</div>;
+      const loggedIn = localStorage.getItem('user');
+      return (
+        <div className="LoginForm"  style={{color: "white"}}>
+          <p>Welcome!</p>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      );
   }
 
   return (
-    <div className="LoginForm">
+    <div className="LoginForm" style={{color: "white"}}>
       <form>
         Username: 
-        <input
-          value={username} name="username" required onChange={handleChange}
-        ></input> <br/><br/>
+        <input name="username" required onChange={handleChange}></input> <br/><br/>
         Password:
-        <input
-          value={password} name="password" required onChange={handleChange}
+        <input type="password" name="password" required onChange={handleChange}
         ></input>
         <br /> <br />
         <button onClick={submitResponse}>

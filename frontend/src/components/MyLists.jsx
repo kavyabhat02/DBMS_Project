@@ -29,14 +29,11 @@ const BookSet = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{color: "white"}}>
       <center>
         <h1>My Lists</h1>
       </center>
-      <Link className="btn btn-dark my-2 my-sm-0 text-light" to="/create">
-        Create New List
-      </Link>
-      <table className="table">
+      <table className="table" style={{color: "white"}}>
         <thead>
           <tr>
             <th scope="col">Title</th>

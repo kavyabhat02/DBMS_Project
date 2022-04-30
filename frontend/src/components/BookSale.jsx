@@ -29,11 +29,11 @@ const BookSaleSet = () => {
   }, []);
 
   return (
-    <div>
+    <div  style={{color: "white"}}>
       <center>
         <h1>Books For Sale</h1>
       </center>
-      <table className="table">
+      <table className="table" style={{color: "white"}}>
         <thead>
           <tr>
             <th scope="col">ISBN</th>

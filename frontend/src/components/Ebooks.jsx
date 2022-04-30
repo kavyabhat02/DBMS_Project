@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
 const EBookSet = () => {
   const [books, setBooks] = useState([]);
 
@@ -29,14 +28,12 @@ const EBookSet = () => {
   }, []);
 
   return (
-    <div>
+    <div  style={{color: "white"}}>
       <center>
         <h1>E-Book List</h1>
       </center>
-      <Link className="btn btn-dark my-2 my-sm-0 text-light" to="/create">
-        Create New EBook
-      </Link>
-      <table className="table">
+      <br></br>
+      <table className="table"  style={{color: "white"}}>
         <thead>
           <tr>
             <th scope="col">ISBN</th>
