@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const BookSet = () => {
+const MyLists = () => {
   const [lists, listBooks] = useState([]);
 
   /*
@@ -22,9 +22,9 @@ const BookSet = () => {
 
   useEffect(() => {
     axios.get("http://localhost:8000/lists").then((res) => {
-      const books = res.data;
-      console.log(lists.data);
-      setBooks(lists);
+      const lists = res.data;
+      console.log(lists);
+      listBooks(lists);
     });
   }, []);
 
@@ -36,18 +36,20 @@ const BookSet = () => {
       <table className="table" style={{color: "white"}}>
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Number of Books</th>
+            <th scope="col">ID</th>
+            <th scope="col">List Name</th>
+            <th scope="col">ISBN</th>
           </tr>
         </thead>
         <tbody>
-          {books && books.map((book, index) => {
+          {lists && lists.map((book, index) => {
             return (
-              <tr key={book.isbn}>
+              <tr key={book.isbn_id}>
+                <th>{index + 1}</th>
                 <td>
-                    {book.title}
+                    {book.listName}
                 </td>
-                <td>{book.no_of_books}</td>
+                <td>{book.isbn_id}</td>
               </tr>
             );
           })}
@@ -57,4 +59,4 @@ const BookSet = () => {
   );
 };
 
-export default BookSet;
+export default MyLists;

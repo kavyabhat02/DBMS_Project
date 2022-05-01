@@ -6,9 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./components/styles/books.jpg");
-  background-color: white;
-   background-blend-mode: darken;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url("./components/styles/books.jpg");
       /* also change the blend mode to what suits you, from darken, to other 
     many options as you deem fit*/
     background-size: cover;

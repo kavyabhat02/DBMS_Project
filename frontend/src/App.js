@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import React from "react";
 import EBookSet from "./components/Ebooks";
 import BookSaleSet from "./components/BookSale";
+import MyLists from "./components/MyLists";
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/ebooks" element={<EBookSet />} />
         <Route exact path="/booksale" element={<BookSaleSet />} />
+        <Route exact path="/lists" element={<MyLists />} />
       </Routes>
       <Footer />
     </Router>

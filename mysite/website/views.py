@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import BooksSerializer
-from .models import books_details, ebooks, books_toSell
+from .models import books_details, ebooks, books_toSell, toReadList
 
 # Create your views here.
 
@@ -14,6 +14,10 @@ def BookView(request):
 def ebooksView(request):
     #serializer_class = BooksSerializer
     queryset = ebooks.objects.all()
+    return JsonResponse(list(queryset.values()), safe=False)
+
+def listsView(request):
+    queryset = toReadList.objects.all()
     return JsonResponse(list(queryset.values()), safe=False)
 
 def buyBooksView(request):

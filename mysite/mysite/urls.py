@@ -26,5 +26,6 @@ urlpatterns = [
     path('api/', include(('website.routers', 'website'), namespace='website-api')),
     path('books/', views.BookView),
     path('ebooks/', views.ebooksView),
+    path('lists/', views.listsView),
     path('booksale/', views.buyBooksView),
 ]
