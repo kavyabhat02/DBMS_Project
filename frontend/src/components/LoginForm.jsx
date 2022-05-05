@@ -63,7 +63,7 @@ const LoginForm = () => {
         setLoginMessage(resp.data.message);
         setUser(resp.data)
         // store the user in localStorage
-        localStorage.setItem('user', resp.data)
+        localStorage.setItem('user', JSON.stringify(resp.data))
       });
   }; 
  
@@ -72,10 +72,10 @@ const LoginForm = () => {
   };
 
   if (user) {
-      const loggedIn = localStorage.getItem('user');
+      const loggedIn = JSON.parse(localStorage.getItem('user'));
       return (
         <div className="LoginForm"  style={{color: "white"}}>
-          <p>Welcome!</p>
+          <p>Welcome!</p> 
           <button onClick={handleLogout}>Logout</button>
         </div>
       );

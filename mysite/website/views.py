@@ -15,12 +15,29 @@ def ebooksView(request):
     return JsonResponse(list(queryset.values()), safe=False)
 
 def listsView(request):
-    queryset = toReadList.objects.all()
-    return JsonResponse(list(queryset.values()), safe=False)
+    queryset = list()
+
+    lists = list(toReadList.objects.all().values())
+    books = list(books_details.objects.all().values())
+
+    for i in range(len(lists)):
+       for j in range(len(books)):
+            if(lists[i]["isbn_id"] == books[j]["isbn"]):
+                queryset.append({**lists[i], **books[j]})
+
+    return JsonResponse(queryset, safe=False)
 
 def reviewView(request):
-    queryset = reviews.objects.all()
-    return JsonResponse(list(queryset.values()), safe=False)
+    rev = list(reviews.objects.all().values())
+    books = list(books_details.objects.all().values())
+    queryset = list() 
+
+    for i in range(len(rev)):
+       for j in range(len(books)):
+            if(rev[i]["isbn_id"] == books[j]["isbn"]):
+                queryset.append({**rev[i], **books[j]})
+
+    return JsonResponse(queryset, safe=False)
 
 def buyBooksView(request):
     queryset = books_toSell.objects.all()

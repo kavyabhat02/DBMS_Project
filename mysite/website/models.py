@@ -38,7 +38,7 @@ class overdue_books(models.Model):
 class reviews(models.Model):
     isbn = models.ForeignKey(books_details, on_delete=models.CASCADE)
     customer_id = models.ForeignKey(customers, on_delete=models.CASCADE)
-    summary = models.TextField()
+    review = models.TextField()
     rating = models.IntegerField()
 
 class books_toSell(models.Model):

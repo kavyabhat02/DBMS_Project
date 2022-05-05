@@ -38,6 +38,7 @@ const Reviews = () => {
           <tr>
             <th scope="col">ID</th>           
             <th scope="col">ISBN</th>
+            <th scope="col">Title</th>
             <th scope="col">Summary</th>
             <th scope="col">Rating</th>
           </tr>
@@ -48,8 +49,9 @@ const Reviews = () => {
               <tr key={book.isbn_id}>
                 <th>{index + 1}</th>
                 <td>{book.isbn_id}</td>
+                <td>{book.title}</td>
                 <td>
-                    {book.summary}
+                    {book.review}
                 </td>
                 <td>{book.rating}</td>
               </tr>
