@@ -10,6 +10,8 @@ import React from "react";
 import EBookSet from "./components/Ebooks";
 import BookSaleSet from "./components/BookSale";
 import MyLists from "./components/MyLists";
+import Reviews from "./components/Reviews";
+
 function App() {
 
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route exact path="/ebooks" element={<EBookSet />} />
         <Route exact path="/booksale" element={<BookSaleSet />} />
         <Route exact path="/lists" element={<MyLists />} />
+        <Route exact path="/reviews" element={<Reviews />} />
       </Routes>
       <Footer />
     </Router>

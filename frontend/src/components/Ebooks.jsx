@@ -51,7 +51,7 @@ const EBookSet = () => {
                     {book.title}
                 </td>
                 <td>{book.author}</td>
-                <td>{book.hyperlink}</td>
+                <td><a style={{color:"#86c5d8"}} href={book.hyperlink}><b>Read here</b></a></td>
               </tr>
             );
           })}

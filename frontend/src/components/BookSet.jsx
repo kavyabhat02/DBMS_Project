@@ -28,6 +28,12 @@ const BookSet = () => {
     });
   }, []);
 
+  const changeStatus = (e) => {
+    e.preventDefault();
+    if(e.target.innerText = "Not Borrowed")
+      e.target.innerText = "Borrowed";
+  }; 
+
  return (
     <div style={{color: "white"}}>
       <center>
@@ -51,7 +57,7 @@ const BookSet = () => {
                     {book.title}
                 </td>
                 <td>{book.summary}</td>
-                <td>{book.status}</td>
+                <td><button onClick={changeStatus}>{book.status}</button></td>
               </tr>
             );
           })}

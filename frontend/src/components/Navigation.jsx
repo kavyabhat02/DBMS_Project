@@ -21,7 +21,7 @@ const Navigation = () => {
         <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/books">
           Books
         </Link>
-        <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/book-reviews">
+        <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/reviews">
           Reviews
         </Link>
         <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/lists">

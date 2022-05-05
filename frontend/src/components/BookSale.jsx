@@ -28,6 +28,12 @@ const BookSaleSet = () => {
     });
   }, []);
 
+  const changeText = (e) => {
+    e.preventDefault();
+    console.log(e.target.innerText);
+    e.target.innerText = "Added To Cart!";
+  }; 
+
   return (
     <div  style={{color: "white"}}>
       <center>
@@ -40,6 +46,7 @@ const BookSaleSet = () => {
             <th scope="col">Title</th>
             <th scope="col">Author</th>
             <th scope="col">Price</th>
+            <th scope="col">Option</th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +59,7 @@ const BookSaleSet = () => {
                 </td>
                 <td>{book.author}</td>
                 <td>{book.price}</td>
+                <td><button onClick={changeText}>Add To Cart</button></td>
               </tr>
             );
           })}

@@ -28,4 +28,5 @@ urlpatterns = [
     path('ebooks/', views.ebooksView),
     path('lists/', views.listsView),
     path('booksale/', views.buyBooksView),
+    path('reviews/', views.reviewView),
 ]
